@@ -9,7 +9,7 @@ static int indice(int topo, int direcao, int Ncartas, int a){
     return (x % Ncartas + Ncartas) % Ncartas;
 }
 
-Baralho *Cria_Baralho(int Ncartas){
+Baralho *CriaBaralho(int Ncartas){
     Baralho *B = malloc(sizeof(Baralho));
 
     B -> Ncartas = Ncartas;
@@ -36,11 +36,11 @@ void destroi(Baralho *B){
 }
 
 //baralho com os lugares onde as cartas de sentam
-int Baralho_cartas(Baralho *B, int a){
+int Bcartas(Baralho *B, int a){
     return b -> rotulo[indice(B -> topo, B -> direcao, B -> Ncartas, a)];
 }
 
-int Baralho_posicao(Const Baralho *B, int x){
+int Bposicao(Const Baralho *B, int x){
     int lugar = b -> pos[x];
     int passos = ((lugar - B -> topo)* B -> direcao % B -> Ncartas + B -> Ncartas) % B -> Ncartas;
     return passos + 1;
