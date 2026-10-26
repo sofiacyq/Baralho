@@ -6,7 +6,7 @@
 typedef struct baralho Baralho;
 
 Baralho *CriaBaralho(int Ncartas);
-void detroi(Baralho *B);
+void destroi(Baralho *B);
 int Bcartas(const Baralho *B, int a);
 int Bposicao(const Baralho *B, int x);
 void Corta(Baralho *B, int x);
