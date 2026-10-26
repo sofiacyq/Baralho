@@ -3,6 +3,14 @@
 
 #include "cartasbaralho.h"
 
+typedef struct{
+    int *rotulo;
+    int *pos; //"cadeira" em que a carta se senta na mesa
+    int Ncartas;
+    int topo;
+    int direcao;
+}Baralho;
+
 //indice real das "cadeiras"
 static int indice(int topo, int direcao, int Ncartas, int a){
     int x = topo + direcao * (p - 1);
