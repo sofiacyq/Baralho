@@ -3,13 +3,7 @@
 #ifndef CARTASBARALHO_H
 #define CARTASBARALHO_H 
 
-typedef struct{
-    int *rotulo;
-    int *pos; //"cadeira" em que a carta se senta na mesa
-    int Ncartas;
-    int topo;
-    int direcao;
-}Baralho;
+typedef struct baralho Baralho;
 
 Baralho *CriaBaralho(int Ncartas);
 void detroi(Baralho *B);
