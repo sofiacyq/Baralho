@@ -44,8 +44,8 @@ void destroi(Baralho *B){
 }
 
 //baralho com os lugares onde as cartas de sentam
-int Bcartas(const Baralho *B, int a){
-    return B -> rotulo[indice(B -> topo, B -> direcao, B -> Ncartas, a)];
+int Bcartas(const Baralho *B, int p){
+    return B -> rotulo[indice(B -> topo, B -> direcao, B -> Ncartas, p)];
 }
 
 int Bposicao(const Baralho *B, int x){
