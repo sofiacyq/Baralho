@@ -1,5 +1,3 @@
-#include <stdio.h>
-
 #ifndef CARTASBARALHO_H
 #define CARTASBARALHO_H 
 
@@ -13,7 +11,7 @@ void Corta(Baralho *B, int x);
 void Vira(Baralho *B);
 void sobe(Baralho *B, int x);
 void ViraTopo(Baralho *B, int k);
-void Mostra(const Baralho *B);
+void Mostra(Baralho *B);
 
 #endif
 

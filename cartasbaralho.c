@@ -13,7 +13,7 @@ typedef struct{
 
 //indice real das "cadeiras"
 static int indice(int topo, int direcao, int Ncartas, int a){
-    int x = topo + direcao * (p - 1);
+    int x = topo + direcao * (a - 1);
     return (x % Ncartas + Ncartas) % Ncartas;
 }
 
@@ -21,12 +21,12 @@ Baralho *CriaBaralho(int Ncartas){
     Baralho *B = malloc(sizeof(Baralho));
 
     B -> Ncartas = Ncartas;
-    B -> rotulo  =  malloc( n * sizeof(int));
-    B -> pos = malloc((n+1)sizeof(int));
+    B -> rotulo  =  malloc( Ncartas * sizeof(int));
+    B -> pos = malloc((Ncartas+1) * sizeof(int));
     B -> topo = 0;
     B -> direcao = +1;
 
-    for(int i = 0; i < n; i++){
+    for(int i = 0; i < Ncartas; i++){
         B -> rotulo[i] = i + 1;
         B -> pos[i+ 1] = i;
     }
@@ -45,33 +45,33 @@ void destroi(Baralho *B){
 
 //baralho com os lugares onde as cartas de sentam
 int Bcartas(const Baralho *B, int a){
-    return b -> rotulo[indice(B -> topo, B -> direcao, B -> Ncartas, a)];
+    return B -> rotulo[indice(B -> topo, B -> direcao, B -> Ncartas, a)];
 }
 
 int Bposicao(const Baralho *B, int x){
-    int lugar = b -> pos[x];
+    int lugar = B -> pos[x];
     int passos = ((lugar - B -> topo)* B -> direcao % B -> Ncartas + B -> Ncartas) % B -> Ncartas;
     return passos + 1;
 
 }
 
 void Corta(Baralho *B, int x){
-    b -> topo = B -> pos[x];
+    B -> topo = B -> pos[x];
 }
 
 void Vira(Baralho *B){
-    int fundo = indice(B -> topo, B -> direcao. B -> Ncartas, B -> Ncartas);
+    int fundo = indice(B -> topo, B -> direcao, B -> Ncartas, B -> Ncartas);
     B -> topo = fundo;
     B -> direcao = -B -> direcao;
 }
 
 static  void Lugarcerto(Baralho *B, int cadeira, int carta){
     B -> rotulo[cadeira] = carta;
-    B -> pos[cartas] = cadeira;
+    B -> pos[carta] = cadeira;
 }
 
 void sobe(Baralho *B, int x){
-    int c = Bposicao(B, a);
+    int c = Bposicao(B, x);
     
     for(int i = c; i >= 2; i--){
         int carta = Bcartas(B, i-1);
@@ -79,11 +79,11 @@ void sobe(Baralho *B, int x){
         Lugarcerto(B, indice(B -> topo, B -> direcao, B -> Ncartas, i), carta);
     }
 
-    Lugarcerto(B, B -> topo, a);
+    Lugarcerto(B, B -> topo, x);
 }
 
 void ViraTopo(Baralho *B, int k){
-    for(int i = 1;  i <= k/2; i--){
+    for(int i = 1;  i <= k/2; i++){
         int j = k - i + 1;
         
         int indi = indice(B -> topo, B -> direcao, B -> Ncartas, i);
@@ -98,7 +98,7 @@ void ViraTopo(Baralho *B, int k){
 }
 
 void Mostra(Baralho *B){
-    for(int  i = 0; i < B -> Ncartas; i++){
+    for(int  i = 1; i <= B -> Ncartas; i++){
         printf("%d", Bcartas(B, i));
         
         if(i < B -> Ncartas){
