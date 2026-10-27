@@ -172,13 +172,14 @@ static void DesfazSobe(Baralho *B, int x, int p){
     Lugarcerto(B, indice(B -> topo, B -> direcao, B -> Ncartas, p), x);
 }
 
-//agora sim a funcao referente ao comando desfaz
+//agora sim a funcao referente ao comando desfaz, vamos desfazer a operacao mais recente do historico
 void Desfaz(Baralho *B){
     entrada E;
 
     if(desempilhahist(&B -> hist, &E) == 0){
         return;
     }
+    //utilizamos um switch/case para facilitar, se a operacao que foi desempilhada la no historico.c for a nosso case, vamos desfazer. 
     switch(E.OPE){
         case CORTA:
         B -> topo = E.a;
@@ -189,7 +190,7 @@ void Desfaz(Baralho *B){
         break;
 
         case SOBE: 
-        DesfazSobe(B, E.a, E.b);
+        DesfazSobe(B, E.a, E.b);// E.a e E.b sao exatamente os parametros "especiais"  que estavam guardados la no historico e com eles podemos desfazer
         break;
 
         case VIRATOPO:
