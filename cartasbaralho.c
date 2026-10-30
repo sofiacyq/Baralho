@@ -4,14 +4,14 @@
 #include "cartasbaralho.h"
 #include "historico.h"
 
-typedef struct{
+struct Baralho{
     int *rotulo;
     int *pos; //"cadeira" em que a carta se senta na mesa
     int Ncartas;
     int topo;
     int direcao;
     Historico hist;
-}Baralho;
+};
 
 //indice real das "cadeiras"
 static int indice(int topo, int direcao, int Ncartas, int p){

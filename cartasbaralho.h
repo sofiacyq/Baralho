@@ -3,7 +3,7 @@
 #ifndef CARTASBARALHO_H
 #define CARTASBARALHO_H 
 
-typedef struct baralho Baralho;
+typedef struct Baralho Baralho;
 
 Baralho *CriaBaralho(int Ncartas);
 void Destroi(Baralho *B);
